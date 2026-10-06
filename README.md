@@ -8,7 +8,10 @@ Needs, loaded first:
 - https://cdn.jsdelivr.net/npm/clipper-lib@6.4.2/clipper.js
 
 ```js
-await Peel.init();            // fetches fonts (fontsource via jsDelivr)
-Peel.useStyle('team');
-await Peel.draw(canvas, Peel.fromType('round'));
+await Peel.init();                 // fetches fonts (fontsource via jsDelivr)
+const stage = Peel.stage(canvas);  // animated sticker: slap on, float + shine, peel; tilt + drag-to-peel
+stage.set(controls.getAll());      // Brik control values → sticker + motion (keys: see the tool's schema)
+controls.setValues(Peel.randomize(controls.getAll()));   // Randomize every unlocked option
 ```
+
+One-off still: `Peel.useStyle('team'); await Peel.draw(canvas, Peel.fromType('round'));`
